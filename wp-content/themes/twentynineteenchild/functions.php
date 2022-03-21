@@ -32,8 +32,8 @@ function image_sizes(){
 
 add_filter('post_class', 'image_sizes');
 
-function wpshout_filter_example( $the_content ) {
+function content_filter_example( $the_content ) {
 	return $the_content. "<br> <p>Thanks for reading!</p>";
 }
-add_filter( 'the_content', 'wpshout_filter_example' );
+add_filter( 'the_content', 'content_filter_example' );
 ?>
