@@ -24,13 +24,13 @@ function enqueue_twenty_nineteen_stylesheet(){
     }
 add_action("wp_enqueue_scripts","enqueue_twenty_nineteen_stylesheet");
 
-function image_sizes(){
-    add_theme_support("post-thumbnails");
-    add_image_size( 'large_square', 1000, 1000, true );
+function new_image_sizes(){
+    //add_theme_support("post-thumbnails");//Do I need this?
+    add_image_size( 'large_square', 743, 824, true );  //this isnt doing what I expected
 	
 }
 
-add_filter('post_class', 'image_sizes');
+add_filter('after_theme_setup', 'new_image_sizes');
 
 function content_filter_example( $the_content ) {
 	return $the_content. "<br> <p>Thanks for reading!</p>";
