@@ -1,0 +1,11 @@
+/*
+
+Theme Name: Fifteen Child
+Template: twentyfifteen
+*/
+
+/* @import url("../twentyfifteen/style.css"); */
+h2#recent-comments, h2#recent-posts{
+    color: steelblue;
+}
+
