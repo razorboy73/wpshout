@@ -33,13 +33,20 @@ function register_tutorial_post_type(){
     register_post_type("tutorial", array(
 
         "public" => true,
+        "show_in_rest" => true,
         "menu_position" => 20,
         'rewrite'     => array( 'slug' => 'tutorials' ),
         "label" => "Tutorials",
         "has_archive" => true,
+        "supports" => array(
+            "title",
+            "editor",
+            "thumbnail",
+            "custom-fields"
        
 
         )
+    )
     );
 
 }
@@ -88,3 +95,28 @@ function topic_tags() {
     register_taxonomy( 'topics', 'tutorial', $args );
 }
 add_action( 'init', 'topic_tags' );
+
+
+
+//Lastly, I’d like each Tutorial post to have a unique property called 
+//“Minutes” that says how long the Tutorial takes to read //
+//(e.g., “6 minutes,” “20 minutes,” “40 minutes,” etc.).
+
+//Had to activate custom-fields support on custom post
+
+//Add time to read
+
+function time_to_read($content){
+    $minutes_to_read = get_post_meta(get_the_ID(), "minutes", true);
+
+    if( empty( $minutes_to_read ) ) {
+		return $content;
+	}
+
+    $minutes_to_read_string = '<br><em>This tutorial will take ' . $minutes_to_read . ' minutes to read.</em><hr>';
+	return  $content. $minutes_to_read_string;
+
+
+}
+
+add_filter( 'the_content', 'time_to_read' );
