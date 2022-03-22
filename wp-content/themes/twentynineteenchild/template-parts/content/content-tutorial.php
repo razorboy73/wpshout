@@ -34,8 +34,12 @@
 				),
 				get_the_title()
 			)
-		);
-
+		);?>
+        <div class="post-taxonomies">
+	Posted in <?php the_terms( get_the_ID(), 'difficulty' ); ?>
+    Tags: <?php the_terms( get_the_ID(), 'topics' ); ?>
+</div>
+<?php
 		wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . __( 'Pages:', 'twentynineteen' ),
