@@ -26,11 +26,12 @@ add_action("wp_enqueue_scripts","enqueue_twenty_nineteen_stylesheet");
 
 function new_image_sizes(){
     //add_theme_support("post-thumbnails");//Do I need this?
+    add_theme_support( 'post-thumbnails' );
     add_image_size( 'large_square', 743, 824, true );  //this isnt doing what I expected
 	
 }
 
-add_filter('after_theme_setup', 'new_image_sizes');
+add_action('after_theme_setup', 'new_image_sizes');
 
 function content_filter_example( $the_content ) {
 	return $the_content. "<br> <p>Thanks for reading!</p>";
