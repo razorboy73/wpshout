@@ -54,7 +54,6 @@ add_shortcode("lmt","lmt_display_shortcode");
 function lmt_display_shortcode($attributes){
     $attributes = shortcode_atts( array( 
 		'difficulty' => 'advanced',
-		'color' => 'blue'
 	), $attributes, 'lmt_display_shortcode' );
 
    
