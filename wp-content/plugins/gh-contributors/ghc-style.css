@@ -1,0 +1,39 @@
+.ghc-shortcode{
+   margin: 0 auto;
+   text-align: center;
+   width: 100%;
+}
+
+
+.ghc-shortcode .user{
+    width: 30%;
+    margin: 1.5%;
+    float: left;
+    position: relative;
+
+}
+
+.ghc-shortcode .user-data{
+    color: white;
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    padding: 0 10px;
+    font-size: .8em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+}
+
+.ghc-shortcode .user img{
+    border-radius: 10px;
+    width: 50%;
+}
+
+.ghc-shortcode:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}

@@ -36,8 +36,10 @@
 			)
 		);?>
         <div class="post-taxonomies">
+		
 	Posted in <?php the_terms( get_the_ID(), 'difficulty' ); ?>
     Tags: <?php the_terms( get_the_ID(), 'topics' ); ?>
+	
     
 </div>
 <?php
