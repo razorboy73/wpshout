@@ -16,24 +16,24 @@ License: GPL2
 // with clickable links.
 
 
-class LastMonthsTutorials{
+     
+    add_shortcode("lmt","lmt_display_shortcode");
+      
     
-    function __construct() {
-        //provides shortcode functionality        
-        add_shortcode("lmt",array($this,"lmt_display_shortcode"));
-        //adds the display to the content
-        add_filter( 'the_content', array($this,'lmt_display_shortcode') );
-        // adds to settings menu
-        add_action("admin_menu", array($this,"adminPage"));
+       
     
-    }
+
 
     function lmt_display_shortcode($attributes){
         $attributes = shortcode_atts( array( 
             'difficulty' => 'beginner',
         ), $attributes, 'lmt_display_shortcode' );
+
+        return lmtGeneration($attributes);
     
-    
+    }
+
+    function lmtGeneration($attributes){
         $q_args = array(
             "post_type" => "tutorial",
             "posts_per_page" => -1,
@@ -58,7 +58,7 @@ class LastMonthsTutorials{
     
         $query = new WP_Query($q_args);
     
-        $buffer = " ";
+        $buffer = "";
         if( $query->have_posts() ) :
             $buffer = $buffer. '<div class="last-month-tuts">';
             $buffer = $buffer. '<h3>'.ucfirst($attributes['difficulty']).' Tutorials From Last Month</h3> <ul>';
@@ -79,19 +79,9 @@ class LastMonthsTutorials{
     
     
     
-    function adminPage(){
-        add_options_page("Last Month's Tutorial Display Settings", "Tutorial Display",
-        "manage_options","lmt-settings-page", array($this,"lmtHTML") );
-    }
     
-    function lmtHTML(){ ?>
-    Hello from plugin settings page
-    <?php }
 
 
-}
-
-$lastMonthsTutorials = new LastMonthsTutorials();
 
 
 

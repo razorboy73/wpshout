@@ -42,7 +42,7 @@ function register_tutorial_post_type(){
             "title",
             "editor",
             "thumbnail",
-            "custom-fields"
+          
        
 
         )
